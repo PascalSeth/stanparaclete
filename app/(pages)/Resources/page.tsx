@@ -1,4 +1,3 @@
-// about us our vision and mission ongoing/upcoming projects
 import React from 'react'
 
 type Props = {}
