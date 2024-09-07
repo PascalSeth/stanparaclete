@@ -56,7 +56,7 @@ export function GirlModel(props: any) {
   }, [wireframe, materials]);
 
   return (
-    <group {...props} ref={group} dispose={null}>'
+    <group {...props} ref={group} dispose={null}>
       <group name="Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0.297]} scale={[1, 1, 0.736]}>
           <group name="1c1316e38ccd4526a8a26f469b45d08dfbx" rotation={[Math.PI / 2, 0, 0]}>
