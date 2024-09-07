@@ -62,7 +62,7 @@ function Showcase({}: Props) {
             </mesh>
 
             <Html                 
-            position={[-3, 1, 0]}
+            position={[-3, 2, 0]}
             >
             <div className="bg-gradient-to-r from-slate-300 to-gray-700 bg-opacity-90 p-3 rounded-[2pc] shadow-lg max-lg:w-[50vw]
             w-[30vw]">
@@ -96,14 +96,14 @@ function Showcase({}: Props) {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                className="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-[1pc] shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                             >
                                 Send
                             </button>
                         </form>
                     </div>
 </Html>
-                <StanModel animation='Talking' rotation-x={4.6}  position-x={2} position-y={-2.3}  scale={1.6}  />
+                <StanModel animation='Talking' rotation-x={4.6}  position-x={2} position-y={-2}  scale={2}  />
                 <Environment preset='dawn' />
 
 
