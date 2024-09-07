@@ -1,5 +1,6 @@
 'use client'
-import { CameraControls, Environment, Float, MeshReflectorMaterial, RenderTexture, Text, useFont } from '@react-three/drei'
+
+import { CameraControls, Environment, Float, Html, MeshReflectorMaterial, RenderTexture, Text, useFont } from '@react-three/drei'
 import React, { useEffect, useRef } from 'react'
 import { RobotModel } from '../models/RobotModel'
 import { degToRad, lerp } from 'three/src/math/MathUtils.js'
@@ -8,6 +9,7 @@ import { useAtom } from 'jotai'
 import { currentPageAtom } from './UI'
 import { useFrame } from '@react-three/fiber'
 import { CyberRoomModel } from '../models/Cyberroom__scifi'
+import { Eye } from 'lucide-react'
 
 type Props = {}
 
@@ -52,6 +54,10 @@ function Showcase({}: Props) {
         }
     }
 
+    const handleBackToHome = () => {
+        setCurrentPage('home')
+    }
+
     return (
         <>
             <CameraControls ref={controls} />
@@ -71,7 +77,7 @@ function Showcase({}: Props) {
                         <color attach='background' args={['#fff']} />
                         <Environment preset='sunset' />
                         <Float floatIntensity={5} rotationIntensity={6}>
-                            <RobotModel props html={false}  scale={1.6} />
+                            <RobotModel props html={false} scale={1.6} />
                         </Float>
                     </RenderTexture>
                 </meshBasicMaterial>
@@ -94,6 +100,15 @@ function Showcase({}: Props) {
                     <meshBasicMaterial color='orange' transparent opacity={0.5} />
                 </mesh>
                 <Environment preset='dawn' />
+
+                {/* Back to Home Button */}
+                <mesh position={[-1, 1, 0]} onPointerDown={handleBackToHome}>
+                    <Html
+                        onClick={handleBackToHome}  // Added onClick event
+                    >
+                        <Eye/>
+                    </Html>
+                </mesh>
             </group>
 
             <mesh position-y={-0.48} rotation-x={-Math.PI / 2}>

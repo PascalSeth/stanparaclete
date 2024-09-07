@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 
 // Define an atom with a default value of 'intro'
-export const currentPageAtom = atom<string>('intro');
+export const currentPageAtom = atom<string>('home');
 
 type Props = {};
 

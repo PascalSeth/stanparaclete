@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { MenuDropdown } from './MenuDropdown'
 
 function Navbar() {
   return (
@@ -25,7 +26,7 @@ function Navbar() {
         <div>
             <Image src='/logo-bg.png' width={80} height={80} alt=''/>
         </div>
-       {/* <MenuDropdown/> */}
+       <MenuDropdown/>
       </div>
       </div>
     </div>
