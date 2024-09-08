@@ -101,14 +101,7 @@ function Showcase({}: Props) {
                 </mesh>
                 <Environment preset='dawn' />
 
-                {/* Back to Home Button */}
-                <mesh position={[-1, 1, 0]} onPointerDown={handleBackToHome}>
-                    <Html
-                        onClick={handleBackToHome}  // Added onClick event
-                    >
-                        <Eye/>
-                    </Html>
-                </mesh>
+           
             </group>
 
             <mesh position-y={-0.48} rotation-x={-Math.PI / 2}>
