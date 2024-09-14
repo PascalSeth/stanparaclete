@@ -11,9 +11,9 @@ function Navbar() {
             <Image src='/logo-bg.png' width={80} height={80} alt=''/>
         </Link>
         <div className='flex space-x-6 items-center font-medium text-gray-200'>
-            <Link href='/'>Expertise</Link>
-            <Link href='/'>Creations</Link>
-            <Link href='/'>Resources</Link>
+            <Link href='/Expertise'>Expertise</Link>
+            <Link href='/AboutUs'>About Us</Link>
+            <Link href='/Projects'>Projects</Link>
             <Link href='/ContactUs'>
                 <button className='p-2 border border-purple-600 bg-gradient-to-bl hover:bg-gradient hover:from-purple-400 hover:to-pink-600  from-purple-300 to-pink-700 rounded-[1pc]'>Contact Us</button>
             </Link>
@@ -22,7 +22,7 @@ function Navbar() {
       </div>
 
       <div className='lg:hidden w-full flex items-center'>
-      <div className='max-w-6xl  w-full flex items-center justify-between mx-auto'>
+      <div className='  w-full flex items-center justify-between '>
         <div>
             <Image src='/logo-bg.png' width={80} height={80} alt=''/>
         </div>

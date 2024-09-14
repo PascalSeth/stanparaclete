@@ -65,8 +65,8 @@ function Showcase({}: Props) {
                     
             position={[-3, 2, 0]}
             >
-            <div className="bg-gradient-to-r z-[10] from-slate-300 to-gray-700 bg-opacity-90 p-3 rounded-[2pc] shadow-lg max-lg:w-[50vw]
-            w-[30vw]">
+            <div className="bg-gradient-to-r z-[10] from-slate-300 to-gray-700 bg-opacity-90 p-3 rounded-[2pc] shadow-lg max-lg:w-[46vw]
+            w-[30vw] maxw:w-[46vw]">
                         <h2 className="text-2xl text-white font-bold mb-2">Contact Us</h2>
                         <form className="space-y-3">
                             <div>

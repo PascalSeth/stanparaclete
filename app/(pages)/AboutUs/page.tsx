@@ -9,15 +9,15 @@ type Props = {}
 function Creation({}: Props) {
   return (
     <div className='h-screen flex flex-col w-full'>
-    <Canvas shadows camera={{position:[0,0,8],fov:42}}>
+    {/* <Canvas shadows camera={{position:[0,0,8],fov:42}}>
         <color attach='background' args={['#171720']}/>
         <fog attach='fog' args={['#171720',10,30]}/>
         <Suspense>
         <Contactus/>
         </Suspense>
       
-    </Canvas>   
-
+    </Canvas>    */}
+about
     </div>
   )
 }
