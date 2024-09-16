@@ -1,13 +1,9 @@
 'use client'
 import { CameraControls, Environment, Float, Html, MeshReflectorMaterial, RenderTexture, Text, useFont } from '@react-three/drei'
 import React, { useEffect, useRef } from 'react'
-import { RobotModel } from '../models/RobotModel'
-import { degToRad, lerp } from 'three/src/math/MathUtils.js'
 import { Color } from 'three'
 import { useAtom } from 'jotai'
 import { currentPageAtom } from './UI'
-import { useFrame } from '@react-three/fiber'
-import { CyberRoomModel } from '../models/Cyberroom__scifi'
 import { StanModel } from '../models/Avatar'
 
 type Props = {}
@@ -46,11 +42,7 @@ function Showcase({}: Props) {
     }, [currentPage])
 
     const fitcamera = async () => {
-        if (currentPage === 'store') {
-            controls.current.fitToBox(meshFitCameraStore.current, true)
-        } else {
             controls.current.fitToBox(meshFitCameraHome.current, true)
-        }
     }
 
     return (
@@ -62,10 +54,10 @@ function Showcase({}: Props) {
             </mesh>
 
             <Html
-                    
             position={[-3, 2, 0]}
+            
             >
-            <div className="bg-gradient-to-r z-[10] from-slate-300 to-gray-700 bg-opacity-90 p-3 rounded-[2pc] shadow-lg max-lg:w-[46vw]
+            <div className="bg-gradient-to-r z-[-55] from-slate-300 to-gray-700 bg-opacity-90 p-3 rounded-[2pc] shadow-lg max-lg:w-[46vw]
             w-[30vw] maxw:w-[46vw]">
                         <h2 className="text-2xl text-white font-bold mb-2">Contact Us</h2>
                         <form className="space-y-3">

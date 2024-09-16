@@ -19,7 +19,7 @@ export function MenuDropdown() {
       </SheetTrigger>
       <SheetContent side={'top'} className='
       bg-gradient-to-r from-gray-400 text-white  to-purple-950
-      z-[9999] h-fit  p-6 rounded-lg'>
+      z-[9999999999999999999] h-fit  p-6 rounded-lg'>
         <SheetHeader>
           <SheetTitle className='text-gray-900 text-xl font-semibold'>Menu</SheetTitle>
         </SheetHeader>
