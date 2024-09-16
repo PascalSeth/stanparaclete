@@ -19,6 +19,7 @@ const projects = [
 export const Project = () => (
     <div className='h-full overflow-y-hidden'>  
         <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
+        <color attach='background' args={['#171720']}/>
     <fog attach="fog" args={['#a79', 8.5, 12]} />
     <ScrollControls pages={projects.length / 2} infinite>
       <Rig rotation={[0, 0, 0.15]}>
@@ -26,7 +27,7 @@ export const Project = () => (
       </Rig>
       <Banner position={[0, -0.15, 0]} />
     </ScrollControls>
-    <Environment preset="dawn" background blur={0.5} />
+    <Environment preset="dawn" blur={0.5} />
   </Canvas></div>
 
 )
