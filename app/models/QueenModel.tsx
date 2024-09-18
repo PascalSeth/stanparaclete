@@ -1,61 +1,35 @@
-import React, { useRef, useEffect } from 'react'
-import { useFrame } from '@react-three/fiber'
-import { Html, useFBX, useGLTF } from '@react-three/drei'
-import { AnimationMixer } from 'three'
+import React, { useRef, useEffect } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { useFBX, useGLTF } from '@react-three/drei';
+import { AnimationMixer, LoopRepeat } from 'three'; // Import LoopRepeat from three
 
 export function QueenModel(props: any) {
-  const { nodes, materials } = useGLTF('/queen.glb') as any
-  const DancingTwerk = useFBX("/animations/Dancing Twerk.fbx")
-  const Samba = useFBX("/animations/Samba Dancing.fbx")
-  const Snake = useFBX("/animations/Snake Hip Hop Dance.fbx")
+  const { nodes, materials } = useGLTF('/queen.glb') as any;
+  const PacingAnimation = useFBX("/animations/Pacing And Talking On A Phone.fbx");
 
-  const groupRef = useRef<any>()
-  const mixerRef = useRef<AnimationMixer | null>(null)
-  const actionsRef = useRef<any>({})
+  const groupRef = useRef<any>();
+  const mixerRef = useRef<AnimationMixer | null>(null);
 
   useEffect(() => {
     if (groupRef.current) {
-      // Step 1: Initialize AnimationMixer
-      const mixer = new AnimationMixer(groupRef.current)
-      mixerRef.current = mixer
+      // Initialize AnimationMixer
+      const mixer = new AnimationMixer(groupRef.current);
+      mixerRef.current = mixer;
 
-      // Step 2: Create actions for each animation
-      actionsRef.current = {
-        DancingTwerk: mixer.clipAction(DancingTwerk.animations[0]),
-        Samba: mixer.clipAction(Samba.animations[0]),
-        Snake: mixer.clipAction(Snake.animations[0]),
-      }
-
-      // Step 3: Play the initial animation (Dancing Twerk)
-      actionsRef.current.DancingTwerk.play()
+      // Create action for Pacing animation
+      const pacingAction = mixer.clipAction(PacingAnimation.animations[0]);
+      pacingAction.setLoop(LoopRepeat,Infinity); // Set the animation to loop infinitely
+      pacingAction.play();
 
       return () => {
-        mixer.stopAllAction()
-      }
+        mixer.stopAllAction();
+      };
     }
-  }, [DancingTwerk, Samba, Snake])
+  }, [PacingAnimation]);
 
-  // Step 4: Update the mixer on each frame to ensure smooth animation
   useFrame((state, delta) => {
-    if (mixerRef.current) mixerRef.current.update(delta)
-  })
-
-  // Step 5: Logic to switch animations with fade transitions
-  const switchAnimation = (animationName: string) => {
-    const currentAction = actionsRef.current[animationName]
-
-    if (currentAction) {
-      // Fade out all actions except the new one
-      Object.keys(actionsRef.current).forEach((key) => {
-        const action = actionsRef.current[key]
-        if (key === animationName) {
-          action.reset().fadeIn(0.5).play() // Fade in the selected animation
-        } else {
-          action.fadeOut(0.5) // Fade out other animations
-        }
-      })
-    }
-  }
+    if (mixerRef.current) mixerRef.current.update(delta);
+  });
 
   return (
     <group ref={groupRef} {...props} dispose={null}>
@@ -117,19 +91,9 @@ export function QueenModel(props: any) {
         material={materials.Wolf3D_Outfit_Top}
         skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
       />
-   
-      {/* Render HTML buttons inside the 3D scene */}
-      <Html position={[6, 2, 0]}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <button onClick={() => switchAnimation('Samba')}>Switch to Samba</button>
-          <button onClick={() => switchAnimation('Snake')}>Switch to Snake</button>
-        </div>
-      </Html> 
-       </group>
-  )
+    </group>
+  );
 }
 
-useGLTF.preload('/queen.glb')
-useFBX.preload("/animations/Dancing Twerk.fbx")
-useFBX.preload("/animations/Samba Dancing.fbx")
-useFBX.preload("/animations/Snake Hip Hop Dance.fbx")
+useGLTF.preload('/queen.glb');
+useFBX.preload("/animations/Pacing And Talking On A Phone.fbx");
