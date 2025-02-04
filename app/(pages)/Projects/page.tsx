@@ -5,7 +5,7 @@ type Props = {}
 
 function page({}: Props) {
   return (
-    <div className='h-screen overflow-y-hidden'>
+    <div className='h-screen '>
       <Project/>
     </div>
   )

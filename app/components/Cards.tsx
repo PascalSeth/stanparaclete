@@ -5,6 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Image, Environment, ScrollControls, useScroll, useTexture } from '@react-three/drei'
 import { easing } from 'maath'
 import '../../utils'
+import FourthSection from './fourth-section/page'
 
 // Use the `projects` array provided earlier
 const projects = [
@@ -16,21 +17,44 @@ const projects = [
   { title: "EliteExclusiveApparels", url: "https://eliltexclusiveapparels.netlify.app/", image: "/apparel.png", description: "Clothing Shop with a working Dashboard", status: "Sites" },
 ]
 
-export const Project = () => (
-    <div className='h-full overflow-y-hidden'>  
-        <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
-        <color attach='background' args={['#171720']}/>
-    <fog attach="fog" args={['#a79', 8.5, 12]} />
-    <ScrollControls pages={projects.length / 2} infinite>
-      <Rig rotation={[0, 0, 0.15]}>
-        <Carousel />
-      </Rig>
-      <Banner position={[0, -0.15, 0]} />
-    </ScrollControls>
-    <Environment preset="dawn" blur={0.5} />
-  </Canvas></div>
+export const Project = () => {
+  const [showCanvas, setShowCanvas] = useState(true);
+  const [buttonText, setButtonText] = useState("See all");
 
-)
+  const handleSeeAllClick = () => {
+    setShowCanvas(!showCanvas);
+    setButtonText(showCanvas ? "See less" : "See all");
+  };
+
+  return (
+    <div className='h-full w-full bg-[#171720]'>
+      <button
+        className='text-white w-full text-[22px] font-semibold text-end p-5 pb-0'
+        onClick={handleSeeAllClick}
+      >
+        {buttonText}
+      </button>
+
+      {showCanvas ? (
+        <Canvas camera={{ position: [0, 0, 100], fov: 15 }}>
+          <color attach='background' args={['#171720']} />
+          <fog attach="fog" args={['#a79', 8.5, 12]} />
+          <ScrollControls pages={projects.length / 2} infinite>
+            <Rig rotation={[0, 0, 0.15]}>
+              <Carousel />
+            </Rig>
+            <Banner position={[0, -0.15, 0]} />
+          </ScrollControls>
+          <Environment preset="dawn" blur={0.5} />
+        </Canvas>
+      ) : (
+        <div className="text-white w-full">
+          <FourthSection />
+        </div>
+      )}
+    </div>
+  );
+};
 
 function Rig(props:any) {
   const ref = useRef() as any
